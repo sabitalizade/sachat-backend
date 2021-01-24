@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "nodemon app"
+    "test": "nodemon app",
+    "start": "node app.js"
   },
   "keywords": [
     "chat"
