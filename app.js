@@ -11,7 +11,7 @@ const PORT =process.env.PORT || 3030
 
 
 
-
+//pusher cinfig
 
 const pusher = new Pusher({
   appId: "1143480",
@@ -32,8 +32,8 @@ mongoose.connect(dbConnection,{
     useUnifiedTopology:true
 })
 
-const db = mongoose.connection
 
+const db = mongoose.connection
 
 db.once("open",()=>{
     console.log("db connected")
@@ -68,7 +68,7 @@ import userRouter from "./router/userRouter.js"
 import messageRouter from "./router/messageRouter.js"
 
 app.get("/",(req,res)=>{
-    res.send("hi home")
+    res.send("fuck you")
 })
 
 app.use("/",userRouter)
