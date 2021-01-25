@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import Message from "./model/messages.js"
 import Pusher from "pusher"
 
 
@@ -65,30 +64,15 @@ app.use(express.json());
 
 
 ///request 
+import userRouter from "./router/userRouter.js"
+import messageRouter from "./router/messageRouter.js"
 
 app.get("/",(req,res)=>{
     res.send("hi home")
 })
 
-app.get('/message/all',(req,res)=>{
-    Message.find((err,data)=>{
-        if(!err){
-            res.status(201).send(data)
-        }else{
-            res.status(500).send(err)
-        }
-    })
-})
-app.post('/message/new',(req,res)=>{
-    const messageBody=req.body
-    Message.create(messageBody,(err,data)=>{
-        if(!err){
-            res.status(201).send(data)
-        }else{
-            res.status(500).send(err)
-        }
-    })
-})
+app.use("/",userRouter)
+app.use("/",messageRouter)
 
 //listen 
 
