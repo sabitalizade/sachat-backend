@@ -26,5 +26,13 @@ router.post('/message/new',(req,res)=>{
     })
 })
 
+router.post("/message/deleteall",(req,res)=>{
+    // console.log(req.body)
+    Message.deleteMany({},data=>{
+        console.log(data)
+        res.status(200).send("All messages deleted")
+    } );
+})
+
 
 export default router
