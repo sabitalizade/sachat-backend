@@ -39,7 +39,7 @@ const {error}=registerValidation(req.body);
 router.post("/login", async(req,res)=>{
     const {error}=loginValidation(req.body);
 // Validation
- if (error) return res.status(400).send(error.details[0].message)
+ if (error) return res.status(400).send("E-mail standartlara uygun deyil")
  
     const user = await Users.findOne({email:req.body.email});
 
@@ -47,7 +47,7 @@ router.post("/login", async(req,res)=>{
     
     const validPass=await bcrypt.compare(req.body.password,user.password);
 
-    if(!validPass) return res.status(400).send("şifre yanlişdir.")
+    if(!validPass) return res.status(400).send("Şifre yanlişdir")
      
     res.send(user)
     // res.send({id:user._id,username:user.username,email:user.email})
