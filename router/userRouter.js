@@ -43,11 +43,11 @@ router.post("/login", async(req,res)=>{
  
     const user = await Users.findOne({email:req.body.email});
 
-    if(!user) return res.status(400).send("E-mail və ya şifre yanlişdir")
+    if(!user) return res.status(400).send("E-mail yanlişdir")
     
     const validPass=await bcrypt.compare(req.body.password,user.password);
 
-    if(!validPass) return res.status(400).send("E-mail və ya şifre yanlişdir.")
+    if(!validPass) return res.status(400).send("şifre yanlişdir.")
      
     res.send(user)
     // res.send({id:user._id,username:user.username,email:user.email})
